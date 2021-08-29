@@ -1,6 +1,4 @@
-# Esqueleto de Projeto feito com NodeJS, usando TypeScript e MySQL
 
-## O banco de dados usado foi o MySQL 8
+# Entrar no bash no node alpine
 
-
-docker network create -d bridge mysql-network
+    docker exec -it web-api /bin/sh

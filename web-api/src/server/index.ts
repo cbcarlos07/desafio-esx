@@ -3,6 +3,8 @@ import routes from '../routes'
 import { env } from '../environment'
 import * as bodyParser from 'body-parser'
 import corsMiddleware from 'restify-cors-middleware'
+
+import { exec }  from 'child_process'
 class Server {
     server: any
     port =  env.SERVER_PORT
@@ -11,9 +13,9 @@ class Server {
     }
 
     listen(){
-
+        
         require('../database/database')
-
+        //this.criarBancoDeDados()
         this.middleware()
         this.routesConfig()        
         this.server.listen( this.port, () =>{
@@ -31,6 +33,21 @@ class Server {
     routesConfig(){
         routes(this.server)
     }
+
+    criarBancoDeDados(){
+        new Promise((resolve, reject) => {
+            const migrate = exec(
+              'npx sequelize db:create && npx sequelize db:migrate',
+              {env: process.env},
+              err => (err ? reject(err) : resolve(0))
+            );
+          
+            // Forward stdout+stderr to this process
+            migrate.stdout.pipe(process.stdout);
+            migrate.stderr.pipe(process.stderr);
+          });
+    }
+
     enableCors(){      
         const cors = corsMiddleware({
             preflightMaxAge: 5,

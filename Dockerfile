@@ -4,7 +4,6 @@ WORKDIR /usr/app
 
 COPY web-api/package*.json ./
 RUN npm install
-RUN npm run create
 COPY . .
 
 EXPOSE 3000
