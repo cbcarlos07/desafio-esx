@@ -1,0 +1,52 @@
+{
+  "name": "projetoNode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch \"src/\" --exec \"ts-node src/index.ts\" -e ts",
+    "db": "npx sequelize db:create",
+    "migrate": "npx sequelize db:migrate",
+    "migrate:undo": "npx sequelize db:migrate:undo",
+    "create":"npm run db && npm run migrate" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbcarlos07/esqueletoProjetoNodeTsMySQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbcarlos07/esqueletoProjetoNodeTsMySQL/issues"
+  },
+  "homepage": "https://github.com/cbcarlos07/esqueletoProjetoNodeTsMySQL#readme",
+  "devDependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/md5": "^2.3.1",
+    "@types/mysql": "^2.15.7",
+    "@types/readable-stream": "2.3.5",
+    "@types/restify": "^8.4.0",
+    "@types/restify-cors-middleware": "^1.0.1",
+    "@types/socket.io": "^2.1.4",
+    "body-parser": "^1.19.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^1.19.3",
+    "restify": "^8.4.0",
+    "restify-cors-middleware": "^1.1.1",
+    "socket.io": "^2.3.0",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "2": "^3.0.0",
+    "@types/sequelize": "^4.28.10",
+    "md5": "^2.3.0",
+    "mysql2": "^2.3.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.21.10",
+    "sequelize-cli": "^5.5.1",
+    "sequelize-typescript": "^1.1.0"
+  }
+}
