@@ -31,8 +31,17 @@ services:
     networks:
       - mysql-network
     depends_on:
-      - desafio-mysql
-  
+      - desafio-mysql  
+  web-server:
+    image: bylexus/apache-php53
+    container_name: web-server
+    volumes:
+      - ./www:/var/www
+    ports:
+      - 80:80
+    networks:
+      - mysql-network
+     
 
 networks:
   mysql-network:

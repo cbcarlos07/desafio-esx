@@ -3,8 +3,8 @@
     <div class="box-header with-border">
       <h3 class="box-title">{{ title }}</h3>
 
-      <div class="box-tools pull-right" *ngIf="chat">
-        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="New Messages">{{ chats.length }}</span>
+      <div class="box-tools pull-right" *ngIf="conversaChat">
+        <span data-toggle="tooltip" title="" class="badge bg-yellow" data-original-title="New Messages">{{ conversaChat.length }}</span>
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
         </button>
         <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="" data-widget="chat-pane-toggle" data-original-title="Contacts">
