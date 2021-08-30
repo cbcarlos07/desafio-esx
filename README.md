@@ -64,6 +64,8 @@ O repositório do Docker Compose do banco de dados utilizado encontra-se [aqui](
 
 ![alt text](https://github.com/cbcarlos07/desafio-esx/blob/main/adicionais/mer.png)
 
+![alt text](https://github.com/cbcarlos07/desafio-esx/blob/main/adicionais/diagrama.PNG)
+
 <b>NOTA</b>
 
 Tenha o docker instalado antes
