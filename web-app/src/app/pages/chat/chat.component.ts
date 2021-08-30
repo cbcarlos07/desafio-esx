@@ -17,13 +17,13 @@ import { Conversa } from './convesa.model';
 })
 export class ChatComponent implements OnInit {
 	
-	private usuarios: Usuario[] = []
-	private usuariosConversa: Usuario[] = []
-	private usuario: Usuario
-	private chatLista: Chat[] = []
-	private salas: Usuario[] = []
-	private sala: Sala
-	private conversaSalaLista: ConversaSala[] = []
+	usuarios: Usuario[] = []
+	usuariosConversa: Usuario[] = []
+	usuario: Usuario
+	chatLista: Chat[] = []
+	salas: Usuario[] = []
+	sala: Sala
+	conversaSalaLista: ConversaSala[] = []
 	constructor(private usuarioService: UsuarioService,
 				private conversasService: ConversasService,
 				private chatService: ChatService,
