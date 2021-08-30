@@ -185,7 +185,7 @@ Basta importar dentro da ferramenta o arquivo `json` e as requisiçoes estão pr
 
 Execução dos testes é baseado no banco de dados de teste.
 
-Na pasta [er](https://github.com/cbcarlos07/desafio-ipdv/tree/master/backend/src/config/db/ddl) encontra-se o arquivo com a base de dados de teste
+Na pasta [adicionais](https://github.com/cbcarlos07/desafio-esx/tree/main/adicionais) encontra-se o arquivo com a base de dados de teste
 
 **ATENÇÃO**
 
@@ -213,6 +213,8 @@ E também adicionar o ip no front no arquivo environment.prod.ts
 
 E executar com o comando 
         
-        ng build --prod       
+        ng build --prod
+
+Na mesma pasta [adicionais](https://github.com/cbcarlos07/desafio-esx/tree/main/adicionais) estã o arquivo json dos teste rest usado no insominia
 
 [Voltar ao inicio](#begin)
