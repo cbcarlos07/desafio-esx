@@ -3,10 +3,12 @@ import routes from '../routes'
 import { env } from '../environment'
 import * as bodyParser from 'body-parser'
 import corsMiddleware from 'restify-cors-middleware'
-
+import  { Socket } from 'socket.io'
 import { exec }  from 'child_process'
+import realtime from '../helpers/realtime'
 class Server {
     server: any
+    io: any
     port =  env.SERVER_PORT
     constructor(){
         this.server = restify.createServer()
@@ -16,6 +18,9 @@ class Server {
         
         require('../database/database')
         //this.criarBancoDeDados()
+       
+      
+        this.setRealtime()
         this.middleware()
         this.routesConfig()        
         this.server.listen( this.port, () =>{
@@ -30,8 +35,21 @@ class Server {
         this.server.use( bodyParser.urlencoded( {extended: true} ) )
     }
 
+    setRealtime(){
+        this.io = require("socket.io")(this.server.server, {
+            cors: {
+                origin: [
+                    'http://localhost',
+                    'http://localhost:4200'
+                ]
+            }
+        });
+        
+        realtime(this.io)
+    }
+
     routesConfig(){
-        routes(this.server)
+        routes({server: this.server, io: this.io})
     }
 
     criarBancoDeDados(){

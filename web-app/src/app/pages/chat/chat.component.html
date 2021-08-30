@@ -1,0 +1,16 @@
+<div class="col-md-12">
+
+    <div class="col-md-6">
+        <app-pessoas title="Lista de Pessoas" [pessoas]="usuarios" (acionarChat)="acionarChat($event)"></app-pessoas>
+        <app-pessoas title="Conversas" [pessoas]="usuariosConversa" (acionarChat)="acionarChat($event)"></app-pessoas>
+    </div>
+
+    <div class="col-md-6">
+        <app-conversa *ngIf="usuario" [usuario]="usuario" [chats]="chatLista"></app-conversa>
+    </div>
+      
+
+
+</div>
+
+  

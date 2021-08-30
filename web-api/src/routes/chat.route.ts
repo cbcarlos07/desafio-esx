@@ -1,4 +1,8 @@
-import chatController from "../controller/chat.controller"
+import chatController, {realtime} from "../controller/chat.controller"
+
+const setRealtimeChat = io => {
+    realtime(io)
+}
 
 const prefix = '/api/v1/chat'
 const chatRoute = server => {
@@ -8,4 +12,6 @@ const chatRoute = server => {
     
     
 }    
+
+export { setRealtimeChat }
 export default chatRoute

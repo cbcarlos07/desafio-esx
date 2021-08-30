@@ -9,7 +9,7 @@
     "db": "npx sequelize db:create",
     "migrate": "npx sequelize db:migrate",
     "migrate:undo": "npx sequelize db:migrate:undo",
-    "create":"npm run db && npm run migrate" 
+    "create": "npm run db && npm run migrate"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "nodemon": "^1.19.3",
     "restify": "^8.4.0",
     "restify-cors-middleware": "^1.1.1",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
   },
