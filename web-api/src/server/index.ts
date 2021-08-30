@@ -3,10 +3,15 @@ import routes from '../routes'
 import { env } from '../environment'
 import * as bodyParser from 'body-parser'
 import corsMiddleware from 'restify-cors-middleware'
-
 import { exec }  from 'child_process'
+import realtime from '../helpers/realtime'
+import swaggerUi  from 'swagger-restify'
+import { swaggerDocument } from '../openapi/swagger'
+import swaggerJsdoc from 'swagger-jsdoc';
+import path from 'path'
 class Server {
     server: any
+    io: any
     port =  env.SERVER_PORT
     constructor(){
         this.server = restify.createServer()
@@ -16,6 +21,9 @@ class Server {
         
         require('../database/database')
         //this.criarBancoDeDados()
+       
+      
+        this.setRealtime()
         this.middleware()
         this.routesConfig()        
         this.server.listen( this.port, () =>{
@@ -30,8 +38,29 @@ class Server {
         this.server.use( bodyParser.urlencoded( {extended: true} ) )
     }
 
+    setRealtime(){
+        this.io = require("socket.io")(this.server.server, {
+            cors: {
+                origin: [
+                    'http://localhost',
+                    'http://localhost:4200',
+                    'http://10.0.0.20'
+                ]
+            }
+        });
+        
+        realtime(this.io)
+    }
+
     routesConfig(){
-        routes(this.server)
+        console.log();
+        const apiJS = path.resolve('src','openapi','api.js')
+        const apiYML = path.resolve('src','openapi','api.yml')
+        console.log('api yml', apiYML);
+        
+        
+        //this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+        routes({server: this.server, io: this.io})
     }
 
     criarBancoDeDados(){

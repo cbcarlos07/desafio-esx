@@ -3,7 +3,7 @@ import conversaService from "../service/Conversa/conversa.service"
 
 class conversaController {
     findAll(req: any, res: any){
-        conversaService.findAll()
+        conversaService.findAll(Number( req.params.id ))
             .then(response => {
                 res.send(response)
             })

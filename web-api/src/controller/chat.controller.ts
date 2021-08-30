@@ -1,5 +1,10 @@
 import chatService from "../service/Chat/chat.service"
 
+let io
+const realtime = socket => {
+    io = socket
+}
+export { realtime }
 
 class ChatController {
     findAll(req: any, res: any){
@@ -13,6 +18,7 @@ class ChatController {
         
         chatService.create(req.body)
             .then(response => {
+                io.emit('chat', response)
                 res.send(response)
             })
     }
@@ -20,6 +26,7 @@ class ChatController {
     sendChat( req: any, res: any ){
         chatService.sendChat(req.body)
             .then(response => {
+                io.emit('chat', response)
                 res.send(response)
             })
     }

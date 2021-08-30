@@ -1,9 +1,26 @@
 import salaRepository from "../../repository/salaRepository";
+import listService from "../ConversaSala/list.service";
+import RemoverService from "../ConversaSala/remove.service";
 
 
 class RemoveService{
     remove(id: number){
-        return salaRepository.del(id)
+        return new Promise(async (resolve, reject)=>{
+            const buscarSala = await listService.findAllChat(id)
+            const ids = buscarSala.map((sala: any) => sala.idSala)
+            
+            RemoverService.remover(ids)
+                .then(()=>{
+                    salaRepository.del(id)
+                        .then(response => {
+                            resolve(response)
+                        }, e =>{
+                            reject(['Problema ao remover'])
+                        })
+
+                })
+            
+        })
     }
 }
 
