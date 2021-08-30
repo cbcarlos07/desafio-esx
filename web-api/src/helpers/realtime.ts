@@ -5,6 +5,10 @@ const realtime =  (io: any) =>{
 
         socket.on('chat', (message: any)=>{
             socket.emit('chat', message) 
+         })
+         
+        socket.on('sala', (message: any)=>{
+            socket.emit('sala', message) 
          })        
     })
 

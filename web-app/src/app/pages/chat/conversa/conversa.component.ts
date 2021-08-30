@@ -37,8 +37,7 @@ export class ConversaComponent implements OnInit, AfterViewChecked {
 	}
 
 	retornarNome(chat: Chat){
-		console.log('idUsuarioRemetente',chat.idUsuarioRemetente);
-		console.log('logado',this.usuarioLogado());
+		
 		
 		return chat.idUsuarioRemetente == this.usuarioLogado()
 				? chat._usuario_remetente.nome
@@ -71,6 +70,7 @@ export class ConversaComponent implements OnInit, AfterViewChecked {
 		this._chatService
 			.criarConversa( conversa )
 			.subscribe((response: any)=>{
+				this.form.controls['mensagem'].setValue(null)
 				console.log('conversa enviada', response);
 				
 			})
@@ -79,15 +79,20 @@ export class ConversaComponent implements OnInit, AfterViewChecked {
 	}
 
 	enviarConversa(){
+		
+		
 		const conversa: Chat = {
 			mensagem: this.form.value.mensagem,
 			idUsuarioRemetente: Number(localStorage.getItem('id')),
 			idUsuarioDestino: this.usuario.id,
 			idConversa: this.usuario.idConversa
 		}
+		
+		
 		this._chatService
 			.enviarConversa( conversa )
 			.subscribe((response: any)=>{
+				this.form.controls['mensagem'].setValue(null)
 				console.log('conversa enviada');
 				
 			})
@@ -99,7 +104,8 @@ export class ConversaComponent implements OnInit, AfterViewChecked {
 			.subscribe((response: any)=>{
 				
 				this.scrollToBottom()
-				this._chatService.emitPesquisa( response )
+				const id = localStorage.getItem('id')
+				this._chatService.emitPesquisa( {...response, id } )
 			})
 	}
 

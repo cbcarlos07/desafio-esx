@@ -11,6 +11,9 @@ import { LoginComponent } from './pages/login/login.component';
   declarations: [
     AppComponent,
     LoginComponent,
+
+
+    
     
     
     
