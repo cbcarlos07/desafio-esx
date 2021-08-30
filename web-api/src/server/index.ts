@@ -5,9 +5,7 @@ import * as bodyParser from 'body-parser'
 import corsMiddleware from 'restify-cors-middleware'
 import { exec }  from 'child_process'
 import realtime from '../helpers/realtime'
-import swaggerUi  from 'swagger-restify'
-import { swaggerDocument } from '../openapi/swagger'
-import swaggerJsdoc from 'swagger-jsdoc';
+
 import path from 'path'
 class Server {
     server: any

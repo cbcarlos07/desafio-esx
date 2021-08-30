@@ -62,7 +62,7 @@ O Banco de dados utilizado no projeto foi o MySQL na versão 8.0.
 
 O repositório do Docker Compose do banco de dados utilizado encontra-se [aqui](https://github.com/cbcarlos07/docker-mysql)
 
-![alt text](https://github.com/cbcarlos07/desafio-ipdv/blob/master/backend/src/config/db/ddl/mer.png)
+![alt text](https://github.com/cbcarlos07/desafio-esx/blob/main/adicionais/mer.png)
 
 <b>NOTA</b>
 
@@ -102,6 +102,10 @@ Após instalados os pacotes necessários, é imprescindível executar o seguinte
 
 Esse script criará o banco de dados, as tabelas e ainda insere dados de teste
 
+Caso tenha problema em implementar o banco de dados [nesta](https://github.com/cbcarlos07/desafio-esx/tree/main/adicionais) pasta está o arquivo sql com alguns inserts 
+
+O nome do banco de dados é **chat**
+
 [Voltar ao inicio](#begin)
 
 ## <a id="run">5. Executando o projeto
@@ -109,9 +113,13 @@ Esse script criará o banco de dados, as tabelas e ainda insere dados de teste
 
 **BACKEND**
 
-Após o banco de dados estiver em execução, os pacotes estiverem instalados, o script de base ser executado, aí o projeto poderá entrar em operação. Para isso, dê o comando:
+Para executar o banco de dados junto com outras configurações, como apache, backend
 
-    npm run dev
+Na raiz do projeto é preciso executar o comando
+
+        docker-compose up
+
+A api está dentro do docker chamada web-api
 
 Mas ao executar o docker-compose o mesmo já será inicializado sendo desnecessário o comando acima    
 
@@ -174,5 +182,33 @@ Basta importar dentro da ferramenta o arquivo `json` e as requisiçoes estão pr
 Execução dos testes é baseado no banco de dados de teste.
 
 Na pasta [er](https://github.com/cbcarlos07/desafio-ipdv/tree/master/backend/src/config/db/ddl) encontra-se o arquivo com a base de dados de teste
+
+**ATENÇÃO**
+
+Caso o projeto seja testado em computadores remotos conectados à mesma rede
+
+É preciso adicionar o ip em questão no arquivo
+
+        web-api/src/server/index.ts
+
+Na função setRealtime() dentro de origin
+
+        this.io = require("socket.io")(this.server.server, {
+            cors: {
+                origin: [
+                    'http://localhost',
+                    'http://localhost:4200',
+                    'http://10.0.0.20'
+                ]
+            }
+        });
+
+E também adicionar o ip no front no arquivo environment.prod.ts 
+
+        api: 'http://10.0.0.20:3000',
+
+E executar com o comando 
+        
+        ng build --prod       
 
 [Voltar ao inicio](#begin)
