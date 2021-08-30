@@ -56,6 +56,7 @@ export class ConversaSalaComponent implements OnInit, AfterViewChecked {
 			.salvarConversa( conversa )
 			.subscribe((response: any)=>{
 				console.log('conversa enviada', response);
+				this.form.controls.mensagem.setValue(null)
 				
 			})
 

@@ -13,6 +13,7 @@ import { ChatComponent } from "../pages/chat/chat.component";
 import { PessoasComponent } from "../pages/chat/pessoas/pessoas.component";
 import { ConversaComponent } from "../pages/chat/conversa/conversa.component";
 import { ConversaSalaComponent } from "../pages/chat/conversa-sala/conversa-sala.component";
+import { SalaComponent } from "../pages/sala/sala.component";
 @NgModule({
     declarations: [
         SnackbarComponent,
@@ -47,7 +48,8 @@ import { ConversaSalaComponent } from "../pages/chat/conversa-sala/conversa-sala
         ChatComponent,
         PessoasComponent,
         ConversaComponent,
-        ConversaSalaComponent
+        ConversaSalaComponent,
+        
     ]
 })
 

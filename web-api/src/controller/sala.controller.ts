@@ -39,6 +39,8 @@ class SalaController {
         salaService.remover(req.params.id)
             .then(response => {
                 res.send(response)
+            }, e=>{
+                res.status(500).send({msg: 'Falha ao tentar remover'},500)
             })
     }
 

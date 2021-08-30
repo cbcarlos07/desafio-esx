@@ -31,7 +31,8 @@ export class MenuComponent implements OnInit {
 
 	getMenu(){
 		this.listas = [
-			{url: 'chat', icone: 'fa-filter', menu: 'Chat'}
+			{url: 'chat', icone: 'fa-filter', menu: 'Chat'},
+			{url: 'sala', icone: 'fa-filter', menu: 'Sala'}
 		]
 	}	
 

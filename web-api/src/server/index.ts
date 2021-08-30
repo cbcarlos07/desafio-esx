@@ -3,9 +3,12 @@ import routes from '../routes'
 import { env } from '../environment'
 import * as bodyParser from 'body-parser'
 import corsMiddleware from 'restify-cors-middleware'
-import  { Socket } from 'socket.io'
 import { exec }  from 'child_process'
 import realtime from '../helpers/realtime'
+import swaggerUi  from 'swagger-restify'
+import { swaggerDocument } from '../openapi/swagger'
+import swaggerJsdoc from 'swagger-jsdoc';
+import path from 'path'
 class Server {
     server: any
     io: any
@@ -50,6 +53,13 @@ class Server {
     }
 
     routesConfig(){
+        console.log();
+        const apiJS = path.resolve('src','openapi','api.js')
+        const apiYML = path.resolve('src','openapi','api.yml')
+        console.log('api yml', apiYML);
+        
+        
+        //this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
         routes({server: this.server, io: this.io})
     }
 

@@ -27,6 +27,10 @@ class ConversaSalaRepository {
             ]
         })
     }
+
+    remover(id: any){
+        return ConversaSala.destroy({where: {id}})
+    }
     
 }
 
