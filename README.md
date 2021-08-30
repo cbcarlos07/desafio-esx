@@ -72,7 +72,7 @@ Antes de executar o comando do docker-compose, primeiro crie a rede interna do d
 
     docker network create -d bridge mysql-network
 
-Na pasta [er](https://github.com/cbcarlos07/desafio-ipdv/tree/master/backend/src/config/db/ddl) deste projeto encontram-se o MER (Modelo Entidade Relacionamento) e o arquivo sql.sql com inserts já realizados
+Na pasta [adicionais](https://github.com/cbcarlos07/desafio-esx/tree/main/adicionais) deste projeto encontram-se o MER (Modelo Entidade Relacionamento) e o arquivo sql.sql com inserts já realizados
 
 Certifique-se de primeiro deixar esse __container__ em execução antes de prosseguir com a inicalização do projeto
 
@@ -130,6 +130,7 @@ Depois que a API estiver inicializada e em execução, dentro da raíz do fronte
         ng serve
 
 
+![alt text](https://github.com/cbcarlos07/desafio-esx/blob/main/adicionais/evdencia.gif)
 
 [Voltar ao inicio](#begin)
 
